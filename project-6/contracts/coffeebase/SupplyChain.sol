@@ -1,8 +1,8 @@
 pragma solidity ^0.5.8;
-import "./../accesscontrol/ConsumerRole.sol";
-import "./../accesscontrol/DistributorRole.sol";
-import "./../accesscontrol/FarmerRole.sol";
-import "./../accesscontrol/RetailerRole.sol";
+import "./../coffeeaccesscontrol/ConsumerRole.sol";
+import "./../coffeeaccesscontrol/DistributorRole.sol";
+import "./../coffeeaccesscontrol/FarmerRole.sol";
+import "./../coffeeaccesscontrol/RetailerRole.sol";
 
 // Define a contract 'Supplychain'
 contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole {
@@ -274,10 +274,10 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   uint    itemUPC,
   address ownerID,
   address originFarmerID,
-  string  originFarmName,
-  string  originFarmInformation,
-  string  originFarmLatitude,
-  string  originFarmLongitude
+  string  memory originFarmName,
+  string  memory originFarmInformation,
+  string  memory originFarmLatitude,
+  string  memory originFarmLongitude
   ) 
   {
   // Assign values to the 8 parameters
@@ -302,7 +302,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   uint    itemSKU,
   uint    itemUPC,
   uint    productID,
-  string  productNotes,
+  string  memory productNotes,
   uint    productPrice,
   uint    itemState,
   address distributorID,
