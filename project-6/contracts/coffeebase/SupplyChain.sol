@@ -184,7 +184,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   
   {
     Item memory item = items[_upc];
-    
+
     // Update the appropriate fields
     item.itemState = State.Processed;
 
@@ -200,10 +200,13 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   // Call modifier to verify caller of this function
   
   {
+    Item memory item = items[_upc];
+
     // Update the appropriate fields
-    
+    item.itemState = State.Packed;
+
     // Emit the appropriate event
-    
+    emit Packed(_upc);
   }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
