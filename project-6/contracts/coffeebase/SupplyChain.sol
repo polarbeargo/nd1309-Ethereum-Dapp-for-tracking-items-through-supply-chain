@@ -255,9 +255,12 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     // Call modifier to verify caller of this function
     
     {
-    // Update the appropriate fields
-    
-    // Emit the appropriate event
+      // Update the appropriate fields
+      Item memory item = items[_upc];
+      item.itemState = State.Shipped;
+      
+      // Emit the appropriate event
+      emit Shipped(_upc);
     
   }
 
