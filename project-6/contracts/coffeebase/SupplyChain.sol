@@ -183,9 +183,8 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   // Call modifier to verify caller of this function
   
   {
-    Item memory item = items[_upc];
-
     // Update the appropriate fields
+    Item memory item = items[_upc];
     item.itemState = State.Processed;
 
     // Emit the appropriate event
@@ -200,9 +199,8 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   // Call modifier to verify caller of this function
   
   {
-    Item memory item = items[_upc];
-
     // Update the appropriate fields
+    Item memory item = items[_upc];
     item.itemState = State.Packed;
 
     // Emit the appropriate event
@@ -216,8 +214,8 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   // Call modifier to verify caller of this function
   
   {
-    Item memory item = items[_upc];
     // Update the appropriate fields
+    Item memory item = items[_upc];
     item.itemState = State.ForSale;
     item.productPrice = _price;
     // Emit the appropriate event
@@ -237,12 +235,15 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     
     {
       Item memory item = items[_upc];
+
       // Update the appropriate fields - ownerID, distributorID, itemState
       item.ownerID = msg.sender;
       item.distributorID = msg.sender;
       item.itemState = State.Sold;
+
       // Transfer money to farmer
       item.originFarmerID.transfer(item.productPrice);
+
       // emit the appropriate event
       emit Sold(_upc);
   }
@@ -294,7 +295,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       item.ownerID = msg.sender;
       item.consumerID = msg.sender;
       item.itemState = State.Purchased;
-      
+
       // Emit the appropriate event
       emit Purchased(_upc);
     
