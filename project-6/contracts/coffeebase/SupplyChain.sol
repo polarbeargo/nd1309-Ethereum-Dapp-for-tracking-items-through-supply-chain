@@ -276,7 +276,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       item.ownerID = msg.sender;
       item.retailerID = msg.sender;
       item.itemState = State.Received;
-      
+
       // Emit the appropriate event
       emit Received(_upc);
     
@@ -289,9 +289,14 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     
     // Access Control List enforced by calling Smart Contract / DApp
     {
-    // Update the appropriate fields - ownerID, consumerID, itemState
-    
-    // Emit the appropriate event
+      // Update the appropriate fields - ownerID, consumerID, itemState
+      Item memory item = items[_upc];
+      item.ownerID = msg.sender;
+      item.consumerID = msg.sender;
+      item.itemState = State.Purchased;
+      
+      // Emit the appropriate event
+      emit Purchased(_upc);
     
   }
 
