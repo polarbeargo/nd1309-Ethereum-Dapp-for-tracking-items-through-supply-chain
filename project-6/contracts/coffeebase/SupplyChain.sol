@@ -236,13 +236,15 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     // Call modifer to send any excess ether back to buyer
     
     {
-    
-    // Update the appropriate fields - ownerID, distributorID, itemState
-    
-    // Transfer money to farmer
-    
-    // emit the appropriate event
-    
+      Item memory item = items[_upc];
+      // Update the appropriate fields - ownerID, distributorID, itemState
+      item.ownerID = msg.sender;
+      item.distributorID = msg.sender;
+      item.itemState = State.Sold;
+      // Transfer money to farmer
+      item.originFarmerID.transfer(item.productPrice);
+      // emit the appropriate event
+      emit Sold(_upc);
   }
 
   // Define a function 'shipItem' that allows the distributor to mark an item 'Shipped'
