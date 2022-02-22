@@ -171,7 +171,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
 
     // Increment sku
     item.sku = sku++;
-
+    items[_upc] = item;
     // Emit the appropriate event
     emit Harvested(_upc);
   }
@@ -186,7 +186,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     // Update the appropriate fields
     Item memory item = items[_upc];
     item.itemState = State.Processed;
-
+    items[_upc] = item;
     // Emit the appropriate event
     emit Processed(_upc);
     
@@ -202,7 +202,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     // Update the appropriate fields
     Item memory item = items[_upc];
     item.itemState = State.Packed;
-
+    items[_upc] = item;
     // Emit the appropriate event
     emit Packed(_upc);
   }
@@ -218,6 +218,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     Item memory item = items[_upc];
     item.itemState = State.ForSale;
     item.productPrice = _price;
+    items[_upc] = item;
     // Emit the appropriate event
     emit ForSale(_upc);
     
@@ -243,14 +244,14 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
 
       // Transfer money to farmer
       item.originFarmerID.transfer(item.productPrice);
-
+      items[_upc] = item;
       // emit the appropriate event
       emit Sold(_upc);
   }
 
   // Define a function 'shipItem' that allows the distributor to mark an item 'Shipped'
   // Use the above modifers to check if the item is sold
-  function shipItem(uint _upc) public 
+  function shipItem(uint _upc) public sold(_upc) onlyDistributor 
     // Call modifier to check if upc has passed previous supply chain stage
     
     // Call modifier to verify caller of this function
@@ -259,7 +260,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       // Update the appropriate fields
       Item memory item = items[_upc];
       item.itemState = State.Shipped;
-
+      items[_upc] = item;
       // Emit the appropriate event
       emit Shipped(_upc);
     
@@ -267,7 +268,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
 
   // Define a function 'receiveItem' that allows the retailer to mark an item 'Received'
   // Use the above modifiers to check if the item is shipped
-  function receiveItem(uint _upc) public 
+  function receiveItem(uint _upc) public shipped(_upc) onlyRetailer 
     // Call modifier to check if upc has passed previous supply chain stage
     
     // Access Control List enforced by calling Smart Contract / DApp
@@ -277,7 +278,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       item.ownerID = msg.sender;
       item.retailerID = msg.sender;
       item.itemState = State.Received;
-
+      items[_upc] = item;
       // Emit the appropriate event
       emit Received(_upc);
     
@@ -295,7 +296,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       item.ownerID = msg.sender;
       item.consumerID = msg.sender;
       item.itemState = State.Purchased;
-
+      items[_upc] = item;
       // Emit the appropriate event
       emit Purchased(_upc);
     
