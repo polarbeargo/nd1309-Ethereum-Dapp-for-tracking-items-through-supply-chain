@@ -1,10 +1,10 @@
 # Project Write- Up  
 [//]: # (Image References)
 
-[image1]: ./images/SequenceDiagram.png
-[image2]: ./images/ActivityDiagram.png
-[image3]: ./images/UMLStateDiagram.png
-[image4]: ./images/UMLClass.png
+[image1]: ./UML/SequenceDiagram.png
+[image2]: ./UML/ActivityDiagram.png
+[image3]: ./UML/UMLStateDiagram.png
+[image4]: ./UML/UMLClass.png
 
 ## UML  
 ![][image2] 
