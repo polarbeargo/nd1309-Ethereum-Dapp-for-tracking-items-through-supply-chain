@@ -1,4 +1,4 @@
-# Project Write- Up  
+# Project Write-Up  
 [//]: # (Image References)
 
 [image1]: ./UML/SequenceDiagram.png
@@ -18,5 +18,5 @@
 - Node v12.16.2  
 - Web3.js v1.5.3  
 ## Contract address  
-transaction hash: 0x5ac072601bb6068427fad1cef7b9c1bb4301934b791bd81155abda7cd64d8ab0
+transaction hash: 0x5ac072601bb6068427fad1cef7b9c1bb4301934b791bd81155abda7cd64d8ab0  
 contract address: 0x23E2b13b08a22E9eEe431F862eC7A17aB1E99B98
