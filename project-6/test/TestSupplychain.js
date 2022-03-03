@@ -82,7 +82,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Processed()
-        var event = supplyChain.contract.events.Processed((err, res) => {
+        var event = supplyChain.Processed((err, res) => {
             eventEmitted = true
         })
 
@@ -114,7 +114,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Packed()
-        var event = supplyChain.contract.events.Packed((err, res) => {
+        var event = supplyChain.Packed((err, res) => {
             eventEmitted = true
         })
 
@@ -146,7 +146,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event ForSale()
-        var event = supplyChain.contract.events.ForSale((err, res) => {
+        var event = supplyChain.ForSale((err, res) => {
             eventEmitted = true
         })
 
@@ -180,9 +180,8 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Sold()
-        var event = supplyChain.Sold()
         
-        var event = supplyChain.contract.events.Sold((err, res) => {
+        var event = supplyChain.Sold((err, res) => {
             eventEmitted = true
         })
         await supplyChain.addDistributor(distributorID)
@@ -215,7 +214,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Shipped()
-        var event = supplyChain.contract.events.Shipped((err, res) => {
+        var event = supplyChain.Shipped((err, res) => {
             eventEmitted = true
         })
 
@@ -247,7 +246,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Received()
-        var event = supplyChain.contract.events.Received((err, res) => {
+        var event = supplyChain.Received((err, res) => {
             eventEmitted = true
         })
         await supplyChain.addRetailer(retailerID)
@@ -280,7 +279,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
         
         // Watch the emitted event Purchased()
-        var event = supplyChain.contract.events.Purchased((err, res) => {
+        var event = supplyChain.Purchased((err, res) => {
             eventEmitted = true
         })
 
