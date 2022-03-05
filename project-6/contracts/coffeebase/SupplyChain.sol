@@ -162,6 +162,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
   {
     // Add the new item as part of Harvest
     Item memory item = items[_upc];
+    item.ownerID = _originFarmerID;
     item.originFarmerID = _originFarmerID;
     item.originFarmName = _originFarmName;
     item.originFarmInformation = _originFarmInformation;
@@ -170,7 +171,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     item.productNotes = _productNotes;
     item.upc = _upc;
     item.sku = sku;
-    
+
     // Increment sku
     item.sku = sku++;
     items[_upc] = item;
