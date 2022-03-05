@@ -13,8 +13,8 @@
 ![][image4]  
 
 ## Libraries   
-- Truffle v4.1.14 (core: 4.1.14)   
-- Solidity v0.5.16 (solc-js)  
+- Truffle v4.1.14 (core: 4.1.14)  
+- Solidity v0.4.24 (solc-js)  
 - Node v12.16.2  
 - Web3.js v1.5.3  
 ## Contract address  
