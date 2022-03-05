@@ -168,7 +168,9 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
     item.originFarmLatitude = _originFarmLatitude;
     item.originFarmLongitude = _originFarmLongitude;
     item.productNotes = _productNotes;
-  
+    item.upc = _upc;
+    item.sku = sku;
+    
     // Increment sku
     item.sku = sku++;
     items[_upc] = item;
