@@ -299,7 +299,7 @@ contract SupplyChain is ConsumerRole, FarmerRole, DistributorRole, RetailerRole 
       item.ownerID = msg.sender;
       item.consumerID = msg.sender;
       item.itemState = State.Purchased;
-      
+      items[_upc] = item;
       // Emit the appropriate event
       emit Purchased(_upc);
     
