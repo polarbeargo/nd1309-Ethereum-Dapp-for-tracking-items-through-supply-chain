@@ -320,7 +320,7 @@ contract('SupplyChain', function(accounts) {
         const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
         
         // Verify the result set:
-        assert.equal(resultBufferTwo[5], 7, 'Error: Invalid item State')
+        assert.equal(resultBufferTwo[5].toNumber(), 7, 'Error: Invalid item State')
     })
 
 });
